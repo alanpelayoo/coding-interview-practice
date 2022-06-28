@@ -1,6 +1,6 @@
 #Code passed test excep optimization tests
-#Optimized, only focuse on outputing the output no extra diccionaries
-#With these method we are counting each occurrance, iterating all over the string, so adding an extra letter ath the end will increase two extra points.
+#Optimized, with these code we are not doing the nessting iteration. reducinge time.
+#NESTED LOOPS NOT REQUIRED "If you're looping through the string multiple times, think about how you can derive the answer mathematically, rather than checking every possible iteration."
 
 def minion_game(string):
     # your code goes here
@@ -9,22 +9,11 @@ def minion_game(string):
     count_k =0
     count_s = 0
     for letter in string:
-        
-        Kevin = False
-        Stuart = False
         if (letter in vowels):
-            Kevin = True
-           
-        elif (letter not in vowels):
-            Stuart = True
+            count_k = len(string)-i + count_k
 
-        for other_string in string[i:]: #We take only the resting part of string
-            if Kevin == True:
-                count_k = count_k +1
-    
-            elif Stuart == True:
-                
-                count_s = count_s +1
+        elif (letter not in vowels):
+            count_s = len(string)-i + count_s
         i+=1
     if count_k > count_s:
         print("Kevin " + str(count_k))
@@ -35,5 +24,5 @@ def minion_game(string):
             
 
 if __name__ == '__main__':
-    s = "BANANAS"
+    s = "BANANA"
     minion_game(s)
